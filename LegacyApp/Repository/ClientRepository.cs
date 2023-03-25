@@ -5,7 +5,7 @@ using LegacyApp.Models;
 
 namespace LegacyApp.Repository
 {
-    public class ClientRepository
+    public class ClientRepository : IClientRepository
     {
         public Client GetById(int id)
         {
