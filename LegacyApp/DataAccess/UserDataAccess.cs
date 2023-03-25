@@ -1,9 +1,10 @@
-﻿using System;  
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using LegacyApp.Models;
 
-namespace LegacyApp
+namespace LegacyApp.DataAccess
 {
     public static class UserDataAccess
     {
@@ -20,21 +21,21 @@ namespace LegacyApp
                     CommandText = "uspAddUser"
                 };
 
-                var firstNameParameter = new SqlParameter("@Firstname", SqlDbType.VarChar, 50) {Value = user.Firstname };
+                var firstNameParameter = new SqlParameter("@Firstname", SqlDbType.VarChar, 50) { Value = user.Firstname };
                 command.Parameters.Add(firstNameParameter);
-                var surnameParameter = new SqlParameter("@Surname", SqlDbType.VarChar, 50) {Value = user.Surname };
+                var surnameParameter = new SqlParameter("@Surname", SqlDbType.VarChar, 50) { Value = user.Surname };
                 command.Parameters.Add(surnameParameter);
-                var dateOfBirthParameter = new SqlParameter("@DateOfBirth", SqlDbType.DateTime) {Value = user.DateOfBirth };
+                var dateOfBirthParameter = new SqlParameter("@DateOfBirth", SqlDbType.DateTime) { Value = user.DateOfBirth };
                 command.Parameters.Add(dateOfBirthParameter);
-                var emailAddressParameter = new SqlParameter("@EmailAddress", SqlDbType.VarChar, 50) {Value = user.EmailAddress };
+                var emailAddressParameter = new SqlParameter("@EmailAddress", SqlDbType.VarChar, 50) { Value = user.EmailAddress };
                 command.Parameters.Add(emailAddressParameter);
-                var hasCreditLimitParameter = new SqlParameter("@HasCreditLimit", SqlDbType.Bit) {Value = user.HasCreditLimit };
+                var hasCreditLimitParameter = new SqlParameter("@HasCreditLimit", SqlDbType.Bit) { Value = user.HasCreditLimit };
                 command.Parameters.Add(hasCreditLimitParameter);
-                var creditLimitParameter = new SqlParameter("@CreditLimit", SqlDbType.Int) {Value = user.CreditLimit };
+                var creditLimitParameter = new SqlParameter("@CreditLimit", SqlDbType.Int) { Value = user.CreditLimit };
                 command.Parameters.Add(creditLimitParameter);
-                var clientIdParameter = new SqlParameter("@ClientId", SqlDbType.Int) {Value = user.Client.Id };
+                var clientIdParameter = new SqlParameter("@ClientId", SqlDbType.Int) { Value = user.Client.Id };
                 command.Parameters.Add(clientIdParameter);
-                
+
                 connection.Open();
                 command.ExecuteNonQuery();
             }
